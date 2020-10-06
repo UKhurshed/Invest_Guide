@@ -1,4 +1,4 @@
-# invest_guide
+# Invest Guide
 
 A new Flutter application.
 
