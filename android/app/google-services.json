@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "71248495584",
+    "firebase_url": "https://invest-guide.firebaseio.com",
+    "project_id": "invest-guide",
+    "storage_bucket": "invest-guide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71248495584:android:24445ed14f31687f6e2185",
+        "android_client_info": {
+          "package_name": "com.example.invest_guide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71248495584-8bfkr08t1s8pnf25sh4q7mka3kpttj4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD80dCtuwH1UB2Zx4samOma_g1g1vzxul4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71248495584-8bfkr08t1s8pnf25sh4q7mka3kpttj4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
