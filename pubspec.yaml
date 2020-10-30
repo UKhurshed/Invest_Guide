@@ -26,9 +26,11 @@ dependencies:
   dio: ^3.0.10
   flutter_bloc: ^6.0.6
   bloc: ^6.0.3
-  firebase_auth: ^0.18.1+2
-  firebase_core: ^0.5.0+1
-  google_sign_in: ^4.5.5
+  formz: ^0.3.2
+  google_fonts: ^1.1.0
+  font_awesome_flutter: ^8.4.0
+  auth_repository:
+    path: packages/auth_repository
 
 
   # The following adds the Cupertino Icons font to your application.
