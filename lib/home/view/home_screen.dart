@@ -1,40 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:invest_guide/authentication/authentication.dart';
+import 'package:invest_guide/home/drawer/drawer.dart';
+import 'package:invest_guide/home/news/news.dart';
+import 'package:invest_guide/home/quotation/quotation.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static Route route() {
     return MaterialPageRoute<void>(builder: (_) => HomeScreen());
   }
 
   @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final List<Widget> pages = [
+    NewsScreen(
+        key: PageStorageKey(
+      'News',
+    )),
+    QuotationScreen(
+      key: PageStorageKey('Quotation'),
+    ),
+  ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
+  int _currentIndex = 0;
+
+  Widget _bottomNavigationBar(int currentIndex) => BottomNavigationBar(
+          selectedItemColor: Colors.blue[600],
+          unselectedItemColor: Colors.black,
+          onTap: (int index) => setState(() => _currentIndex = index),
+          currentIndex: currentIndex,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.leaderboard), label: 'Quotation'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.textsms,
+                ),
+                label: 'News'),
+          ]);
+
+  @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final user = context.bloc<AuthenticationBloc>().state.user;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
-        actions: <Widget>[
-          IconButton(
-            key: const Key('homePage_logout_iconButton'),
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () => context
-                .bloc<AuthenticationBloc>()
-                .add(AuthenticationLogoutRequested()),
-          )
-        ],
       ),
-      body: Align(
-        alignment: const Alignment(0, -1 / 3),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const SizedBox(height: 4.0),
-            Text(user.email, style: textTheme.headline6),
-            const SizedBox(height: 4.0),
-            Text(user.name ?? '', style: textTheme.headline5),
-          ],
-        ),
+      drawer: AppDrawer(),
+      bottomNavigationBar: _bottomNavigationBar(_currentIndex),
+      body: PageStorage(
+        child: pages[_currentIndex],
+        bucket: bucket,
       ),
     );
   }

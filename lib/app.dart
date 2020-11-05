@@ -41,10 +41,10 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme:ThemeData(
-        primaryColor: Color(0xff6a515e),
-        cursorColor: Color(0xff6a515e),
-      ),
+      // theme:ThemeData(
+      //   primaryColor: Color(0xff6a515e),
+      //   cursorColor: Color(0xff6a515e),
+      // ),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(

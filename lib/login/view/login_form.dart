@@ -28,9 +28,9 @@ class LoginForm extends StatelessWidget {
             const SizedBox(height: 10.0),
             _LoginButton(),
             const SizedBox(height: 10.0),
-            _GoogleLoginButton(),
-            const SizedBox(height: 10.0),
             _SignUpButton(),
+            const SizedBox(height: 10.0),
+            _GoogleLoginButton(),
           ],
         ),
       ),
@@ -103,7 +103,7 @@ class _LoginButton extends StatelessWidget {
           child: MaterialButton(
               onPressed: state.status.isValidated
                   ? () =>
-                  context.bloc<SignUpCubit>().signUpFormSubmitted()
+                  context.bloc<LoginCubit>().logInWithCredentials()
                   : null,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               shape: StadiumBorder(),
@@ -139,11 +139,12 @@ class _GoogleLoginButton extends StatelessWidget {
       key: const Key('loginForm_googleLogin_raisedButton'),
       label: const Text(
         'SIGN IN WITH GOOGLE',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.blueAccent),
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      icon: const Icon(FontAwesomeIcons.google, color: Colors.white),
-      color: theme.accentColor,
+      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+      icon: const Icon(FontAwesomeIcons.google, color: Colors.blueAccent),
+      elevation: 0,
+      color: Color(0xfff4ced9),
       onPressed: () => context.bloc<LoginCubit>().logInWithGoogle(),
     );
   }
